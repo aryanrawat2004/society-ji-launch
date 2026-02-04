@@ -1,5 +1,5 @@
-import { Home, Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
-import SocietyJiLogo from "./SocietyJiLogo";
+import { Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
+import societyJiLogo from "@/assets/society-ji-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,9 +39,11 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
-                <Home className="w-5 h-5 text-white" />
-              </div>
+              <img 
+                src={societyJiLogo} 
+                alt="Society Ji Logo" 
+                className="w-10 h-10 rounded-xl"
+              />
               <span className="text-xl font-bold text-white">
                 Society<span className="text-purple-400">Ji</span>
               </span>

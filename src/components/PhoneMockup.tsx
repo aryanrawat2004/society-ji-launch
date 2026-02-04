@@ -7,6 +7,7 @@ import {
   Settings,
   ChevronRight 
 } from "lucide-react";
+import societyJiLogo from "@/assets/society-ji-logo.png";
 
 const PhoneMockup = () => {
   return (
@@ -31,9 +32,11 @@ const PhoneMockup = () => {
           <div className="pt-10 pb-4 h-full bg-gradient-to-b from-lavender-soft to-white overflow-hidden">
             {/* Header */}
             <div className="flex flex-col items-center pt-4 pb-6">
-              <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center mb-3">
-                <Home className="w-8 h-8 text-primary" />
-              </div>
+              <img 
+                src={societyJiLogo} 
+                alt="Society Ji Logo" 
+                className="w-16 h-16 rounded-2xl mb-3 shadow-md"
+              />
               <h3 className="text-lg font-bold text-foreground">Sunshine Apartments</h3>
               <p className="text-xs text-muted-foreground">Admin User</p>
               <span className="mt-2 px-3 py-1 text-[10px] font-medium text-primary bg-purple-100 rounded-full">
