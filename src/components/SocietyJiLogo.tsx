@@ -1,12 +1,19 @@
-import { Home } from "lucide-react";
+import societyJiLogo from "@/assets/society-ji-logo.png";
 
-const SocietyJiLogo = ({ className = "" }: { className?: string }) => {
+interface SocietyJiLogoProps {
+  className?: string;
+  variant?: "light" | "dark";
+}
+
+const SocietyJiLogo = ({ className = "", variant = "dark" }: SocietyJiLogoProps) => {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-glass">
-        <Home className="w-5 h-5 text-white" />
-      </div>
-      <span className="text-xl font-bold text-foreground">
+      <img 
+        src={societyJiLogo} 
+        alt="Society Ji Logo" 
+        className="w-10 h-10 rounded-xl"
+      />
+      <span className={`text-xl font-bold ${variant === "light" ? "text-white" : "text-foreground"}`}>
         Society<span className="text-primary">Ji</span>
       </span>
     </div>

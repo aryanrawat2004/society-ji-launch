@@ -30,7 +30,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <SocietyJiLogo />
+        <SocietyJiLogo variant={isScrolled ? "dark" : "light"} />
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
