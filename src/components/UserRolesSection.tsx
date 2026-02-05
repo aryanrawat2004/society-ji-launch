@@ -1,4 +1,6 @@
 import { Settings, ShieldCheck, User } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
+import { motion } from "framer-motion";
 
 const roles = [
   {
@@ -29,7 +31,7 @@ const UserRolesSection = () => {
     <section id="roles" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <AnimatedSection className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
             Built For Everyone
           </span>
@@ -40,13 +42,17 @@ const UserRolesSection = () => {
           <p className="text-muted-foreground text-lg">
             Tailored interfaces for every role in your society
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Role Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {roles.map((role, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
               className="group relative rounded-3xl bg-card p-8 border-2 border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-glass-lg"
             >
               {/* Gradient Top Border */}
@@ -95,7 +101,7 @@ const UserRolesSection = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

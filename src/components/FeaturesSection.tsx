@@ -1,4 +1,6 @@
 import { QrCode, Receipt, Shield, Users } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -36,7 +38,7 @@ const FeaturesSection = () => {
     <section id="features" className="py-20 md:py-28 bg-lavender-gradient">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <AnimatedSection className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
             Features
           </span>
@@ -47,13 +49,17 @@ const FeaturesSection = () => {
           <p className="text-muted-foreground text-lg">
             Everything you need to run your society efficiently, all in one powerful app.
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`group bento-card glass-card rounded-3xl p-6 md:p-8 ${
                 feature.size === "large" ? "lg:col-span-2" : ""
               }`}
@@ -75,7 +81,7 @@ const FeaturesSection = () => {
 
               {/* Decorative Element */}
               <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+            </motion.div>
           ))}
         </div>
 

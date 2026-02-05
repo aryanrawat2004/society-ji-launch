@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Apple, Smartphone } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 const DownloadSection = () => {
   return (
@@ -18,7 +19,7 @@ const DownloadSection = () => {
       }} />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <AnimatedSection className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6">
             Ready to Transform Your Society?
           </h2>
@@ -57,7 +58,7 @@ const DownloadSection = () => {
           <p className="mt-8 text-white/60 text-sm">
             Or scan the QR code in our app to invite your society
           </p>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
