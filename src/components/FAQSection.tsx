@@ -43,7 +43,7 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-lavender-soft to-white">
+    <section id="faq" className="py-24 bg-gradient-to-b from-lavender-soft to-white">
       <div className="container mx-auto px-4 max-w-4xl">
         <AnimatedSection>
           <div className="text-center mb-16">

@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 import societyJiLogo from "@/assets/society-ji-logo.png";
 
 const Footer = () => {
@@ -6,20 +7,17 @@ const Footer = () => {
 
   const footerLinks = {
     product: [
-      { label: "Features", href: "#features" },
-      { label: "For Admins", href: "#roles" },
-      { label: "For Guards", href: "#roles" },
-      { label: "For Residents", href: "#roles" },
+      { label: "Features", href: "/#features" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "FAQ", href: "/#faq" },
     ],
     company: [
       { label: "About Us", href: "#" },
       { label: "Careers", href: "#" },
       { label: "Blog", href: "#" },
-      { label: "Press Kit", href: "#" },
     ],
     support: [
-      { label: "Help Center", href: "#" },
-      { label: "Contact Us", href: "#" },
+      { label: "Contact Us", href: "/contact" },
       { label: "Privacy Policy", href: "#" },
       { label: "Terms of Service", href: "#" },
     ],
@@ -31,6 +29,27 @@ const Footer = () => {
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Facebook, href: "#", label: "Facebook" },
   ];
+
+  const renderLink = (link: { label: string; href: string }) => {
+    if (link.href.startsWith("/") && !link.href.startsWith("/#")) {
+      return (
+        <Link
+          to={link.href}
+          className="text-white/60 hover:text-primary transition-colors"
+        >
+          {link.label}
+        </Link>
+      );
+    }
+    return (
+      <a
+        href={link.href}
+        className="text-white/60 hover:text-primary transition-colors"
+      >
+        {link.label}
+      </a>
+    );
+  };
 
   return (
     <footer className="bg-foreground text-white/80 pt-16 pb-8">
@@ -72,14 +91,7 @@ const Footer = () => {
             <h4 className="font-semibold text-white mb-4">Product</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/60 hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>
           </div>
@@ -88,14 +100,7 @@ const Footer = () => {
             <h4 className="font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/60 hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>
           </div>
@@ -104,14 +109,7 @@ const Footer = () => {
             <h4 className="font-semibold text-white mb-4">Support</h4>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/60 hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>
           </div>
