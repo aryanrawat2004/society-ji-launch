@@ -52,17 +52,23 @@ const AdminPanel = () => {
   const token = getAuthToken();
   const profile = getAuthProfile();
   
+  console.log("AdminPanel - Auth check:", { token: !!token, profile });
+  
   if (!token || !profile) {
+    console.log("AdminPanel - No token or profile, redirecting to login");
     clearAuthSession();
     navigate("/login", { replace: true });
     return null;
   }
   
-  if (profile.role !== "admin" || !profile.is_system_generated) {
+  if (profile.role !== "admin") {
+    console.log("AdminPanel - Not admin role, redirecting to login");
     clearAuthSession();
     navigate("/login", { replace: true });
     return null;
   }
+  
+  console.log("AdminPanel - Rendering admin panel for:", profile.email);
 
   const handleChange = (field: keyof GenerateCredentialsPayload, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
