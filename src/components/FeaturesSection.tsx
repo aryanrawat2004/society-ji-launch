@@ -52,7 +52,7 @@ const FeaturesSection = () => {
         </AnimatedSection>
 
         {/* Bento Grid - Responsive for all devices */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-5 lg:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 max-w-4xl mx-auto">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -60,11 +60,7 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group relative bento-card glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 ${
-                feature.size === "large" 
-                  ? "sm:col-span-2 lg:col-span-5" 
-                  : "sm:col-span-1 lg:col-span-3"
-              } ${index === 0 ? "lg:col-start-1" : ""} ${index === 3 ? "lg:col-start-1" : ""}`}
+              className="group relative bento-card glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8"
             >
               {/* Icon */}
               <div
