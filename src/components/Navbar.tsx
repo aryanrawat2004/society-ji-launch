@@ -156,7 +156,7 @@ const Navbar = () => {
             } transition-all duration-300`}
             asChild
           >
-            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
           </Button>
           <Button
             variant={isScrolled || !isHomePage ? "default" : "hero"}
@@ -164,7 +164,7 @@ const Navbar = () => {
             className="shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
             asChild
           >
-            <Link to="/contact">Get Started</Link>
+            <Link to="/login">Login</Link>
           </Button>
         </div>
 
@@ -210,10 +210,10 @@ const Navbar = () => {
           <div className="p-3 pt-0 border-t border-border/50 mt-1">
             <div className="flex flex-col gap-2.5 pt-3">
               <Button variant="outline" size="default" className="w-full justify-center" asChild>
-                <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link>
               </Button>
               <Button variant="default" size="default" className="w-full justify-center shadow-lg shadow-primary/20" asChild>
-                <Link to="/contact">Get Started</Link>
+                <Link to="/login">Login</Link>
               </Button>
             </div>
           </div>
