@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import PhoneMockup from "./PhoneMockup";
 import heroBuilding from "@/assets/hero-building.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
@@ -40,7 +42,7 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
-              <Button variant="hero" size="lg" className="group">
+              <Button variant="hero" size="lg" className="group" onClick={() => navigate("/signup")}>
                 Get Started
                 <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
               </Button>

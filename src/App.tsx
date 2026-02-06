@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
+import Signup from "./pages/Signup";
 import CreateSociety from "./pages/CreateSociety";
 import AdminPanel from "./pages/AdminPanel";
 import { getAuthProfile, getAuthToken } from "@/lib/auth";
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<AdminLogin />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/admin/login" element={<Navigate to="/login" replace />} />
           <Route
             path="/admin"
