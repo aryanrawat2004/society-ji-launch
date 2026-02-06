@@ -52,9 +52,15 @@ const LoginCard = ({
         isAdminLogin = true;
         setLoginSuccess('admin');
         return;
-      } catch (adminErr) {
+      } catch (adminErr: any) {
         // Admin login failed, try user login
-        console.log("Admin login failed, trying user login...");
+        console.log("Admin login failed:", adminErr);
+        
+        // If it's an explicit authentication error, don't try user login
+        if (adminErr?.status === 401 || adminErr?.status === 403) {
+          const errorMessage = adminErr?.message || "Invalid credentials";
+          throw new Error(errorMessage);
+        }
       }
 
       // If admin login failed, try user login
@@ -63,15 +69,16 @@ const LoginCard = ({
           const userResult = await userLogin(email, password);
           console.log("User login successful:", userResult);
           setLoginSuccess('user');
-        } catch (userErr) {
+        } catch (userErr: any) {
           // Both logins failed
-          const errorMsg = userErr instanceof Error ? userErr.message : "Invalid credentials";
+          const errorMsg = userErr?.message || "Invalid credentials";
           throw new Error(errorMsg);
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Login error:", err);
-      setError(err instanceof Error ? err.message : "Login failed");
+      const errorMessage = err?.message || err?.detail || "Login failed. Please check your credentials.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
