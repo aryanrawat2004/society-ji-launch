@@ -51,8 +51,8 @@ const FeaturesSection = () => {
           </p>
         </AnimatedSection>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        {/* Bento Grid - Responsive for all devices */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-5 lg:gap-6 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -60,27 +60,29 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group bento-card glass-card rounded-3xl p-6 md:p-8 ${
-                feature.size === "large" ? "lg:col-span-2" : ""
-              }`}
+              className={`group relative bento-card glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 ${
+                feature.size === "large" 
+                  ? "sm:col-span-2 lg:col-span-5" 
+                  : "sm:col-span-1 lg:col-span-3"
+              } ${index === 0 ? "lg:col-start-1" : ""} ${index === 3 ? "lg:col-start-1" : ""}`}
             >
               {/* Icon */}
               <div
-                className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-gradient-to-br ${feature.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 bg-gradient-to-br ${feature.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
               >
-                <feature.icon className="w-7 h-7 text-white" />
+                <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-foreground mb-2">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1.5 sm:mb-2">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
 
               {/* Decorative Element */}
-              <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-4 right-4 w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             </motion.div>
           ))}
         </div>
