@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -137,8 +138,11 @@ const LoginCard = ({
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Signing in..." : "Sign In"}
           </Button>
-          <p className="text-xs text-muted-foreground text-center">
-            Access will be granted based on your credentials
+          <p className="text-sm text-muted-foreground text-center">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-primary font-medium hover:underline">
+              Sign Up
+            </Link>
           </p>
         </form>
       </CardContent>
