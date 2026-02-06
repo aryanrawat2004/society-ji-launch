@@ -5,9 +5,11 @@ import FAQSection from "@/components/FAQSection";
 import DownloadSection from "@/components/DownloadSection";
 import Footer from "@/components/Footer";
 import LoginCard from "@/components/LoginCard";
+import PageTransition from "@/components/PageTransition";
 
 const Index = () => {
   return (
+    <PageTransition>
     <div className="min-h-screen overflow-x-hidden">
       <Navbar />
       <HeroSection />
@@ -31,6 +33,7 @@ const Index = () => {
       <DownloadSection />
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 
