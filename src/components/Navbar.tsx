@@ -104,8 +104,9 @@ const Navbar = () => {
           <Button
             variant={isScrolled || !isHomePage ? "ghost" : "heroOutline"}
             size="sm"
+            asChild
           >
-            Login
+            <Link to="/login">Login</Link>
           </Button>
           <Button 
             variant={isScrolled || !isHomePage ? "default" : "hero"} 
@@ -137,8 +138,8 @@ const Navbar = () => {
         <div className="container mx-auto px-4 py-4 flex flex-col">
           {navLinks.map((link) => renderLink(link, true))}
           <div className="flex flex-col gap-3 pt-4 mt-2 border-t border-border">
-            <Button variant="outline" size="default">
-              Login
+            <Button variant="outline" size="default" asChild>
+              <Link to="/login">Login</Link>
             </Button>
             <Button variant="default" size="default" asChild>
               <Link to="/contact">Get Started</Link>

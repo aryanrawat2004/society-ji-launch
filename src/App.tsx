@@ -2,14 +2,30 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import CreateSociety from "./pages/CreateSociety";
+import AdminPanel from "./pages/AdminPanel";
+import { getAuthProfile, getAuthToken } from "@/lib/auth";
 
 const queryClient = new QueryClient();
+
+const RequireAdmin = ({ children }: { children: JSX.Element }) => {
+  const token = getAuthToken();
+  const profile = getAuthProfile();
+  if (!token || !profile) {
+    return <Navigate to="/login" replace />;
+  }
+  if (profile.role !== "admin" || !profile.is_system_generated) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -22,6 +38,32 @@ const App = () => (
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/login" element={<AdminLogin />} />
+          <Route path="/admin/login" element={<Navigate to="/login" replace />} />
+          <Route
+            path="/admin"
+            element={
+              <RequireAdmin>
+                <AdminPanel />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="/admin/panel"
+            element={
+              <RequireAdmin>
+                <AdminPanel />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="/admin/create-society"
+            element={
+              <RequireAdmin>
+                <CreateSociety />
+              </RequireAdmin>
+            }
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
