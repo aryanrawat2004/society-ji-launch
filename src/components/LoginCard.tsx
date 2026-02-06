@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff } from "lucide-react";
-import { adminLogin, userLogin } from "@/lib/auth";
+import { adminLogin, userLogin, getAuthProfile } from "@/lib/auth";
 
 interface LoginCardProps {
   title?: string;
@@ -24,19 +24,33 @@ const LoginCard = ({
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loginSuccess, setLoginSuccess] = useState<'admin' | 'user' | null>(null);
+
+  // Handle navigation after successful login
+  useEffect(() => {
+    if (loginSuccess === 'admin') {
+      console.log("Redirecting to admin panel...");
+      navigate("/admin", { replace: true });
+    } else if (loginSuccess === 'user') {
+      console.log("Redirecting to home...");
+      navigate("/", { replace: true });
+    }
+  }, [loginSuccess, navigate]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError(null);
     setLoading(true);
+    setLoginSuccess(null);
 
     try {
       // Try admin login first
       let isAdminLogin = false;
       try {
-        await adminLogin(email, password);
+        const adminResult = await adminLogin(email, password);
+        console.log("Admin login successful:", adminResult);
         isAdminLogin = true;
-        navigate("/admin", { replace: true });
+        setLoginSuccess('admin');
         return;
       } catch (adminErr) {
         // Admin login failed, try user login
@@ -46,8 +60,9 @@ const LoginCard = ({
       // If admin login failed, try user login
       if (!isAdminLogin) {
         try {
-          await userLogin(email, password);
-          navigate("/", { replace: true });
+          const userResult = await userLogin(email, password);
+          console.log("User login successful:", userResult);
+          setLoginSuccess('user');
         } catch (userErr) {
           // Both logins failed
           const errorMsg = userErr instanceof Error ? userErr.message : "Invalid credentials";

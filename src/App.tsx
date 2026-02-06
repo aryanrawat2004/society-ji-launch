@@ -18,12 +18,19 @@ const queryClient = new QueryClient();
 const RequireAdmin = ({ children }: { children: JSX.Element }) => {
   const token = getAuthToken();
   const profile = getAuthProfile();
+  
+  console.log("RequireAdmin check:", { token: !!token, profile });
+  
   if (!token || !profile) {
+    console.log("No token or profile, redirecting to login");
     return <Navigate to="/login" replace />;
   }
-  if (profile.role !== "admin" || !profile.is_system_generated) {
+  if (profile.role !== "admin") {
+    console.log("Not admin role, redirecting to login. Role:", profile.role);
     return <Navigate to="/login" replace />;
   }
+  
+  console.log("Admin access granted!");
   return children;
 };
 
