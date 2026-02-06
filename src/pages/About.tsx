@@ -1,5 +1,6 @@
 import { Target, Heart, Shield, Users, Lightbulb, Award } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
@@ -83,6 +84,7 @@ const milestones = [
 
 const About = () => {
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
       <Navbar />
       
@@ -360,6 +362,7 @@ const About = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 
