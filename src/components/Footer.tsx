@@ -83,10 +83,18 @@ const Footer = () => {
                   <a href="tel:+917230995101" className="hover:text-primary transition-colors">+91 72309 95101</a>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span>Jaipur, India</span>
-              </div>
+              <a 
+                href="https://maps.app.goo.gl/MimXtrmLczLb9bk87" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 hover:text-primary transition-colors"
+              >
+                <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                <span className="text-sm leading-relaxed">
+                  09, opposite Sunny Trade Center, Gangaram Nagar, New Aatish Market, RHB Colony, Mansarovar, Jaipur, Rajasthan 302020
+                  <span className="block text-primary/70 group-hover:text-primary text-xs mt-1">📍 View on Google Maps →</span>
+                </span>
+              </a>
             </div>
           </div>
 
