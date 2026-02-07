@@ -8,47 +8,19 @@ import { motion } from "framer-motion";
 
 const teamMembers = [
   {
-    name: "Arjun Mehta",
+    name: "Kushagra Tandon",
     role: "Founder & CEO",
-    avatar: "AM",
-    bio: "Former product lead at a major fintech, passionate about building community-first solutions.",
+    avatar: "KT",
+    bio: "Passionate about solving real community problems through technology. Started SocietyJi from firsthand frustration with society management in Jaipur.",
     gradient: "from-primary to-purple-600"
   },
   {
-    name: "Priya Kapoor",
+    name: "Sarthak Jhalani",
     role: "Co-Founder & CTO",
-    avatar: "PK",
-    bio: "Ex-Google engineer with 10+ years in building scalable mobile applications.",
-    gradient: "from-pink-500 to-rose-500"
-  },
-  {
-    name: "Rahul Singh",
-    role: "Head of Product",
-    avatar: "RS",
-    bio: "Product visionary who believes technology should simplify, not complicate life.",
+    avatar: "SJ",
+    bio: "Tech architect who leads the engineering vision. Builds scalable, reliable systems that power thousands of residents daily.",
     gradient: "from-blue-500 to-cyan-500"
   },
-  {
-    name: "Neha Sharma",
-    role: "Head of Design",
-    avatar: "NS",
-    bio: "Award-winning designer focused on creating intuitive, accessible experiences.",
-    gradient: "from-emerald-500 to-teal-500"
-  },
-  {
-    name: "Vikram Patel",
-    role: "Head of Engineering",
-    avatar: "VP",
-    bio: "Architecture expert who loves solving complex problems with elegant code.",
-    gradient: "from-orange-500 to-amber-500"
-  },
-  {
-    name: "Ananya Reddy",
-    role: "Head of Customer Success",
-    avatar: "AR",
-    bio: "Community builder dedicated to ensuring every society succeeds with our platform.",
-    gradient: "from-violet-500 to-purple-500"
-  }
 ];
 
 const values = [
@@ -65,7 +37,7 @@ const values = [
   {
     icon: Lightbulb,
     title: "Innovation",
-    description: "We constantly push boundaries to bring smart, modern solutions to traditional society management."
+    description: "We push boundaries to bring smart, modern solutions to traditional society management."
   },
   {
     icon: Users,
@@ -116,7 +88,7 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    It all started in 2020 when our founder, Arjun, moved into a new apartment complex. 
+                    It all started when our founder, Kushagra, experienced the chaos of society management firsthand. 
                     What should have been an exciting new chapter quickly became a headache—managing visitors 
                     meant phone calls at odd hours, maintenance payments required standing in queues, and 
                     getting society updates was nearly impossible.
@@ -126,9 +98,9 @@ const About = () => {
                     what if managing society life was as easy as ordering food online?
                   </p>
                   <p>
-                    Together with a passionate team sharing the same vision of technology-enabled communities, 
-                    Society<span className="text-primary font-semibold">Ji</span> was born in Jaipur. Starting with just 5 pilot societies, we've grown to 
-                    serve 10+ societies and 1,200+ residents in Jaipur.
+                    Together with co-founder Sarthak Jhalani and a small but dedicated tech team, 
+                    Society<span className="text-primary font-semibold">Ji</span> was born in Jaipur. Starting with just a handful of pilot societies, we've grown to 
+                    serve 10+ societies and 1,200+ residents.
                   </p>
                 </div>
               </div>
@@ -241,15 +213,15 @@ const About = () => {
                 Our Team
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Meet the People Behind Society<span className="text-primary">Ji</span>
+                The Founders Behind Society<span className="text-primary">Ji</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                A passionate team dedicated to transforming community living across India.
+                A small, focused team building something meaningful for communities.
               </p>
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
