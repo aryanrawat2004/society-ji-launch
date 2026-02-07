@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, User, ShieldCheck, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocietyJiLogo from "./SocietyJiLogo";
+import { getAuthProfile, getAuthToken, clearAuthSession } from "@/lib/auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -146,26 +154,74 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-2.5">
-          <Button
-            variant={isScrolled || !isHomePage ? "ghost" : "heroOutline"}
-            size="sm"
-            className={`${
-              isScrolled || !isHomePage
-                ? "border border-border hover:border-primary/30"
-                : "border-white/20"
-            } transition-all duration-300`}
-            asChild
-          >
-            <Link to="/signup">Sign Up</Link>
-          </Button>
-          <Button
-            variant={isScrolled || !isHomePage ? "default" : "hero"}
-            size="sm"
-            className="shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
-            asChild
-          >
-            <Link to="/login">Login</Link>
-          </Button>
+          {(() => {
+            const authToken = getAuthToken();
+            const authProfile = getAuthProfile();
+            const isAdmin = authToken && authProfile?.role === "admin";
+            const isLoggedIn = !!authToken && !!authProfile;
+
+            if (isLoggedIn) {
+              return (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant={isScrolled || !isHomePage ? "outline" : "heroOutline"}
+                      size="sm"
+                      className="gap-2"
+                    >
+                      <User className="h-4 w-4" />
+                      {authProfile?.name?.split(" ")[0] || "Account"}
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48 bg-popover z-50">
+                    {isAdmin && (
+                      <>
+                        <DropdownMenuItem asChild className="cursor-pointer gap-2">
+                          <Link to="/admin">
+                            <ShieldCheck className="h-4 w-4" />
+                            Switch to Admin View
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                      </>
+                    )}
+                    <DropdownMenuItem
+                      className="cursor-pointer gap-2 text-destructive focus:text-destructive"
+                      onClick={() => { clearAuthSession(); navigate("/"); }}
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Logout
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              );
+            }
+
+            return (
+              <>
+                <Button
+                  variant={isScrolled || !isHomePage ? "ghost" : "heroOutline"}
+                  size="sm"
+                  className={`${
+                    isScrolled || !isHomePage
+                      ? "border border-border hover:border-primary/30"
+                      : "border-white/20"
+                  } transition-all duration-300`}
+                  asChild
+                >
+                  <Link to="/signup">Sign Up</Link>
+                </Button>
+                <Button
+                  variant={isScrolled || !isHomePage ? "default" : "hero"}
+                  size="sm"
+                  className="shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
+                  asChild
+                >
+                  <Link to="/login">Login</Link>
+                </Button>
+              </>
+            );
+          })()}
         </div>
 
         {/* Mobile Menu Button */}
@@ -209,12 +265,45 @@ const Navbar = () => {
           </div>
           <div className="p-3 pt-0 border-t border-border/50 mt-1">
             <div className="flex flex-col gap-2.5 pt-3">
-              <Button variant="outline" size="default" className="w-full justify-center" asChild>
-                <Link to="/signup">Sign Up</Link>
-              </Button>
-              <Button variant="default" size="default" className="w-full justify-center shadow-lg shadow-primary/20" asChild>
-                <Link to="/login">Login</Link>
-              </Button>
+              {(() => {
+                const authToken = getAuthToken();
+                const authProfile = getAuthProfile();
+                const isAdmin = authToken && authProfile?.role === "admin";
+                const isLoggedIn = !!authToken && !!authProfile;
+
+                if (isLoggedIn) {
+                  return (
+                    <>
+                      {isAdmin && (
+                        <Button variant="default" size="default" className="w-full justify-center gap-2 shadow-lg shadow-primary/20" asChild>
+                          <Link to="/admin">
+                            <ShieldCheck className="h-4 w-4" /> Switch to Admin View
+                          </Link>
+                        </Button>
+                      )}
+                      <Button
+                        variant="outline"
+                        size="default"
+                        className="w-full justify-center gap-2 text-destructive border-destructive/30 hover:bg-destructive/10"
+                        onClick={() => { clearAuthSession(); navigate("/"); setIsMobileMenuOpen(false); }}
+                      >
+                        <LogOut className="h-4 w-4" /> Logout
+                      </Button>
+                    </>
+                  );
+                }
+
+                return (
+                  <>
+                    <Button variant="outline" size="default" className="w-full justify-center" asChild>
+                      <Link to="/signup">Sign Up</Link>
+                    </Button>
+                    <Button variant="default" size="default" className="w-full justify-center shadow-lg shadow-primary/20" asChild>
+                      <Link to="/login">Login</Link>
+                    </Button>
+                  </>
+                );
+              })()}
             </div>
           </div>
         </div>
