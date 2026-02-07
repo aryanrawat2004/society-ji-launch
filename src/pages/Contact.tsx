@@ -210,7 +210,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Email</h3>
-                      <p className="text-muted-foreground">support@societyji.com</p>
+                      <p className="text-muted-foreground">hello@societyji.com</p>
                     </div>
                   </div>
 
@@ -220,7 +220,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Phone</h3>
-                      <p className="text-muted-foreground">+91 1800-123-4567</p>
+                      <p className="text-muted-foreground">+91 73004 26820 | +91 72309 95101</p>
                     </div>
                   </div>
 
@@ -231,8 +231,9 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground">Office</h3>
                       <p className="text-muted-foreground">
-                        123 Tech Park, Sector 5<br />
-                        Gurugram, Haryana 122001
+                        09, opposite Sunny Trade Center, Gangaram Nagar,<br />
+                        New Aatish Market, RHB Colony, Mansarovar,<br />
+                        Jaipur, Rajasthan 302020
                       </p>
                     </div>
                   </div>
