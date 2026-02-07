@@ -7,52 +7,52 @@ const milestones = [
   {
     year: "2024",
     quarter: "Q1 – Q3",
-    title: "The Spark & Deep R&D",
+    title: "Idea & Research",
     description:
-      "Identified the pain points of society management firsthand in Jaipur. Spent 8 months researching, interviewing 50+ society secretaries, and building the core platform architecture.",
+      "Kushagra experienced society management chaos firsthand in Jaipur. Spent months talking to residents, secretaries, and guards to understand real pain points before writing a single line of code.",
     icon: Lightbulb,
     gradient: "from-amber-400 to-orange-500",
-    highlights: ["Market Research", "Prototype Built", "50+ Interviews"],
+    highlights: ["Problem Discovery", "User Research", "Concept Validation"],
   },
   {
     year: "2024",
     quarter: "Q4",
-    title: "Beta Testing & Iteration",
+    title: "Building & Beta",
     description:
-      "Launched closed beta with 3 societies in Mansarovar, Jaipur. Collected real feedback, fixed 100+ issues, and refined the visitor management and billing modules.",
+      "Sarthak joined as co-founder & CTO. Together, built the first working version and tested it with 3 societies in Jaipur. Iterated fast based on real resident feedback.",
     icon: FlaskConical,
     gradient: "from-blue-400 to-indigo-500",
-    highlights: ["3 Beta Societies", "100+ Bugs Fixed", "Core Features Ready"],
+    highlights: ["MVP Built", "3 Pilot Societies", "Real Feedback Loop"],
   },
   {
     year: "2025",
-    quarter: "Q1",
-    title: "First Official Launch",
+    quarter: "Q1 – Q2",
+    title: "Soft Launch",
     description:
-      "Soft-launched Society Ji with 5 residential societies in Jaipur. Onboarded first paid customers, enabled QR-based visitor management, and automated maintenance billing.",
+      "Officially launched SocietyJi with 5 societies in Jaipur. Enabled QR visitor management, automated billing, and guard tracking. First paying customers onboarded.",
     icon: Rocket,
     gradient: "from-primary to-purple-600",
-    highlights: ["5 Societies Live", "QR Visitor System", "Auto Billing"],
+    highlights: ["5 Societies", "First Revenue", "QR Visitors"],
   },
   {
     year: "2025",
-    quarter: "Q2 – Q4",
-    title: "Steady Growth",
+    quarter: "Q3 – Q4",
+    title: "Growing Steadily",
     description:
-      "Expanded to 10+ societies with 1,200+ residents. Added guard geo-fencing, community polls, and event management. Word-of-mouth drove organic growth across Jaipur.",
+      "Grew to 10+ societies and 1,200+ residents through word-of-mouth. Added community polls, event management, and guard geo-fencing. Organic growth across Jaipur.",
     icon: Users,
     gradient: "from-emerald-400 to-teal-500",
-    highlights: ["10+ Societies", "1,200+ Residents", "Guard Monitoring"],
+    highlights: ["10+ Societies", "1,200+ Residents", "Word-of-Mouth"],
   },
   {
     year: "2026",
     quarter: "Ongoing",
-    title: "Scaling & Big Vision",
+    title: "Scaling Up",
     description:
-      "Expanding beyond Jaipur to Rajasthan's major cities. Building advanced analytics for society admins, integrating smart IoT devices, and aiming for 100+ societies by year-end.",
+      "Expanding to more cities in Rajasthan. Building smarter tools for society admins and aiming to serve 100+ societies by year-end.",
     icon: TrendingUp,
     gradient: "from-pink-500 to-rose-500",
-    highlights: ["Multi-City Expansion", "IoT Integration", "100+ Societies Goal"],
+    highlights: ["Multi-City", "Admin Analytics", "100+ Target"],
   },
 ];
 
@@ -187,7 +187,7 @@ const AnimatedTimeline = () => {
           </motion.span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-4">
             Building the{" "}
-            <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="text-primary">
               Future
             </span>
           </h2>
