@@ -131,7 +131,7 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/40 text-sm">
-              © {currentYear} Society Ji. All rights reserved.
+              © {currentYear} Society<span className="text-primary">Ji</span>. All rights reserved.
             </p>
 
             {/* Social Links */}

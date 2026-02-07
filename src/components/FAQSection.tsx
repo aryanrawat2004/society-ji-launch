@@ -54,7 +54,7 @@ const FAQSection = () => {
               Frequently Asked <span className="text-primary">Questions</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to know about Society Ji. Can't find the answer you're looking for? 
+              Everything you need to know about Society<span className="text-primary font-semibold">Ji</span>. Can't find the answer you're looking for? 
               Reach out to our support team.
             </p>
           </div>
