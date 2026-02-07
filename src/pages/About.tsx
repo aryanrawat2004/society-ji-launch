@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedTimeline from "@/components/AnimatedTimeline";
 import { motion } from "framer-motion";
 
 const teamMembers = [
@@ -73,11 +74,7 @@ const values = [
   }
 ];
 
-const milestones = [
-  { year: "2023", title: "The Idea", description: "Founded with a vision to digitize society management in Jaipur" },
-  { year: "2024", title: "First Launch", description: "Launched with 5 pilot societies in Jaipur" },
-  { year: "2025", title: "Growing Strong", description: "Serving 10+ societies and 1,200+ residents" },
-];
+// milestones moved to AnimatedTimeline component
 
 const About = () => {
   return (
@@ -232,54 +229,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Journey Timeline */}
-      <section className="py-20 bg-gradient-to-b from-background to-lavender-soft">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
-                Our Journey
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Milestones Along the Way
-              </h2>
-            </div>
-          </AnimatedSection>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 transform md:-translate-x-1/2" />
-              
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`relative flex items-center mb-8 ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                >
-                  <div className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"} pl-12 md:pl-0`}>
-                    <div className="glass-card rounded-2xl p-5">
-                      <span className="text-primary font-bold text-lg">{milestone.year}</span>
-                      <h3 className="font-bold text-foreground mt-1">{milestone.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">{milestone.description}</p>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline dot */}
-                  <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-primary transform md:-translate-x-1/2 shadow-lg" />
-                  
-                  <div className="hidden md:block flex-1" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Journey Timeline - Animated Video Style */}
+      <AnimatedTimeline />
 
       {/* Team Section */}
       <section className="py-20">
