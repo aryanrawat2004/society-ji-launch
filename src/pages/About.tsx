@@ -95,7 +95,7 @@ const About = () => {
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 We're on a mission to make residential community management effortless, secure, and connected. 
-                Society Ji is more than an app—it's a movement towards smarter living.
+                Society<span className="text-primary font-semibold">Ji</span> is more than an app—it's a movement towards smarter living.
               </p>
             </div>
           </AnimatedSection>
@@ -127,7 +127,7 @@ const About = () => {
                   </p>
                   <p>
                     Together with a passionate team sharing the same vision of technology-enabled communities, 
-                    Society Ji was born in Jaipur. Starting with just 5 pilot societies, we've grown to 
+                    Society<span className="text-primary font-semibold">Ji</span> was born in Jaipur. Starting with just 5 pilot societies, we've grown to 
                     serve 10+ societies and 1,200+ residents in Jaipur.
                   </p>
                 </div>
@@ -241,7 +241,7 @@ const About = () => {
                 Our Team
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Meet the People Behind Society Ji
+                Meet the People Behind Society<span className="text-primary">Ji</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 A passionate team dedicated to transforming community living across India.

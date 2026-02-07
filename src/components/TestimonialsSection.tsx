@@ -97,7 +97,7 @@ const TestimonialsSection = () => {
               Loved by <span className="text-primary">1,200+</span> Residents
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              See what our community members say about their experience with Society Ji
+              See what our community members say about their experience with Society<span className="text-primary font-semibold">Ji</span>
             </p>
           </div>
         </AnimatedSection>

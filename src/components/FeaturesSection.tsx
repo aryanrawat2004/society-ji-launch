@@ -44,7 +44,7 @@ const FeaturesSection = () => {
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground mb-4">
             Why Choose{" "}
-            <span className="gradient-text">Society Ji?</span>
+            <span className="gradient-text">Society</span><span className="text-primary">Ji</span>?
           </h2>
           <p className="text-muted-foreground text-lg">
             Everything you need to run your society efficiently, all in one powerful app.
