@@ -63,7 +63,7 @@ const HeroSection = () => {
                     />
                   ))}
                 </div>
-                <span className="text-sm">10,000+ Happy Residents</span>
+                <span className="text-sm">1,200+ Happy Residents</span>
               </div>
               <div className="hidden sm:block w-px h-6 bg-white/20" />
               <div className="flex items-center gap-1">

@@ -94,7 +94,7 @@ const TestimonialsSection = () => {
               Testimonials
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Loved by <span className="text-primary">10,000+</span> Residents
+              Loved by <span className="text-primary">1,200+</span> Residents
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               See what our community members say about their experience with Society Ji
@@ -112,10 +112,10 @@ const TestimonialsSection = () => {
         <AnimatedSection delay={0.4}>
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { value: "10,000+", label: "Happy Residents" },
-              { value: "500+", label: "Societies" },
-              { value: "4.9", label: "App Rating" },
-              { value: "99.9%", label: "Uptime" }
+              { value: "1,200+", label: "Happy Residents" },
+              { value: "10+", label: "Societies" },
+              { value: "4.8", label: "App Rating" },
+              { value: "5,000+", label: "Visitors Managed" }
             ].map((stat, index) => (
               <div 
                 key={index} 

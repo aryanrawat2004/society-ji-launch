@@ -86,10 +86,10 @@ const FeaturesSection = () => {
         {/* Additional Features Grid */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[
-            { label: "Societies", value: "500+" },
-            { label: "Residents", value: "50K+" },
-            { label: "Transactions", value: "₹10Cr+" },
-            { label: "Uptime", value: "99.9%" },
+            { label: "Societies", value: "10+" },
+            { label: "Residents", value: "1,200+" },
+            { label: "Visitors Managed", value: "5,000+" },
+            { label: "App Rating", value: "4.8★" },
           ].map((stat, index) => (
             <div
               key={index}
