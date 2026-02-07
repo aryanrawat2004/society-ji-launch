@@ -87,7 +87,7 @@ const Signup = () => {
               <UserPlus className="w-7 h-7 text-primary" />
             </div>
             <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
-            <CardDescription>Join Society Ji for smart society management</CardDescription>
+            <CardDescription>Join Society<span className="text-primary font-semibold">Ji</span> for smart society management</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
