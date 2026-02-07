@@ -301,52 +301,109 @@ Generated on: ${new Date(generatedCredentials.credential_generated_at).toLocaleS
                   <CardContent>
                     {generatedCredentials ? (
                       <div className="space-y-4">
-                        <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                          <div className="space-y-3">
-                            <div>
-                              <Label className="text-sm font-medium">Name</Label>
-                              <p className="text-sm text-gray-700">{generatedCredentials.name}</p>
+                        <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl shadow-sm">
+                          <div className="space-y-4 font-mono text-sm">
+                            <div className="flex items-start space-x-3">
+                              <span className="text-xl">👤</span>
+                              <div className="flex-1">
+                                <p className="text-gray-500 text-xs uppercase tracking-wider">Name</p>
+                                <p className="text-gray-900 font-semibold text-base">{generatedCredentials.name}</p>
+                              </div>
                             </div>
                             
-                            <div>
-                              <Label className="text-sm font-medium">Email</Label>
-                              <p className="text-sm text-gray-700">{generatedCredentials.email}</p>
+                            <div className="flex items-start space-x-3">
+                              <span className="text-xl">📧</span>
+                              <div className="flex-1">
+                                <p className="text-gray-500 text-xs uppercase tracking-wider">Email</p>
+                                <p className="text-gray-900 font-semibold text-base break-all">{generatedCredentials.email}</p>
+                              </div>
                             </div>
                             
-                            <div>
-                              <Label className="text-sm font-medium">Phone</Label>
-                              <p className="text-sm text-gray-700">{generatedCredentials.phone}</p>
+                            <div className="flex items-start space-x-3">
+                              <span className="text-xl">📱</span>
+                              <div className="flex-1">
+                                <p className="text-gray-500 text-xs uppercase tracking-wider">Phone</p>
+                                <p className="text-gray-900 font-semibold text-base">{generatedCredentials.phone}</p>
+                              </div>
                             </div>
                             
-                            <div>
-                              <Label className="text-sm font-medium">Password</Label>
-                              <div className="flex items-center space-x-2">
-                                <code className="flex-1 p-2 bg-gray-100 rounded text-sm font-mono">
-                                  {showPassword ? generatedCredentials.generated_password : "••••••••••••"}
-                                </code>
-                                <Button
-                                  type="button"
-                                  variant="outline"
-                                  size="sm"
-                                  onClick={() => setShowPassword(!showPassword)}
-                                >
-                                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                                </Button>
+                            <div className="flex items-start space-x-3">
+                              <span className="text-xl">🔑</span>
+                              <div className="flex-1">
+                                <p className="text-gray-500 text-xs uppercase tracking-wider">Password</p>
+                                <div className="flex items-center space-x-2">
+                                  <code className="flex-1 p-3 bg-white border border-green-200 rounded-lg text-base font-bold text-green-700">
+                                    {showPassword ? generatedCredentials.generated_password : "••••••••••••"}
+                                  </code>
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="border-green-300 hover:bg-green-100"
+                                  >
+                                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="pt-3 border-t-2 border-green-200">
+                              <div className="flex items-start space-x-3">
+                                <span className="text-xl">🔐</span>
+                                <div className="flex-1">
+                                  <p className="text-gray-500 text-xs uppercase tracking-wider">Login URL</p>
+                                  <p className="text-blue-600 font-semibold text-base break-all">{window.location.origin}/login</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="pt-3 border-t-2 border-green-200">
+                              <div className="flex items-start space-x-3">
+                                <span className="text-xl">📅</span>
+                                <div className="flex-1">
+                                  <p className="text-gray-500 text-xs uppercase tracking-wider">Generated on</p>
+                                  <p className="text-gray-700 font-medium text-sm">
+                                    {new Date(generatedCredentials.credential_generated_at).toLocaleString()}
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
 
                         <div className="flex space-x-2">
-                          <Button onClick={copyCredentials} className="flex-1">
+                          <Button onClick={copyCredentials} className="flex-1 bg-green-600 hover:bg-green-700">
                             <Copy className="h-4 w-4 mr-2" />
-                            {copied ? "Copied!" : "Copy All Details"}
+                            {copied ? "Copied! ✓" : "Copy All Details"}
                           </Button>
                         </div>
 
-                        <div className="p-3 bg-blue-50 border border-blue-200 rounded text-sm">
-                          <p className="font-medium text-blue-900">⚠️ Security Notice:</p>
-                          <p className="text-blue-700">Password is shown only once. Make sure to share it securely with the secretary.</p>
+                        <div className="p-4 bg-amber-50 border-2 border-amber-300 rounded-lg">
+                          <div className="flex items-start space-x-3">
+                            <span className="text-2xl">⚠️</span>
+                            <div className="flex-1">
+                              <p className="font-bold text-amber-900 mb-2">IMPORTANT:</p>
+                              <ul className="space-y-1 text-sm text-amber-800">
+                                <li className="flex items-start">
+                                  <span className="mr-2">•</span>
+                                  <span>Keep these credentials secure</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="mr-2">•</span>
+                                  <span>Share only with the intended society secretary</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="mr-2">•</span>
+                                  <span>Password shown only once for security</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="mr-2">•</span>
+                                  <span>Secretary can use these to login and create society</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     ) : (
