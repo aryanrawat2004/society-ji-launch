@@ -24,7 +24,7 @@ const DownloadSection = () => {
             Ready to Transform Your Society?
           </h2>
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Join thousands of modern societies already using Society Ji. Download now and experience smart community living.
+            Join growing societies in Jaipur already using Society Ji. Download now and experience smart community living.
           </p>
 
           {/* Download Buttons */}

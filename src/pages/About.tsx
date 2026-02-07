@@ -74,12 +74,9 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2020", title: "The Idea", description: "Founded with a vision to digitize society management" },
-  { year: "2021", title: "First Launch", description: "Launched with 10 pilot societies in Bangalore" },
-  { year: "2022", title: "Rapid Growth", description: "Expanded to 100+ societies across 5 cities" },
-  { year: "2023", title: "Series A", description: "Raised funding to scale nationwide" },
-  { year: "2024", title: "500+ Societies", description: "Serving 50,000+ happy residents" },
-  { year: "2025", title: "Going National", description: "Present in 20+ cities across India" }
+  { year: "2023", title: "The Idea", description: "Founded with a vision to digitize society management in Jaipur" },
+  { year: "2024", title: "First Launch", description: "Launched with 5 pilot societies in Jaipur" },
+  { year: "2025", title: "Growing Strong", description: "Serving 10+ societies and 1,200+ residents" },
 ];
 
 const About = () => {
@@ -132,9 +129,9 @@ const About = () => {
                     what if managing society life was as easy as ordering food online?
                   </p>
                   <p>
-                    Together with co-founder Priya, who shared the same vision of technology-enabled communities, 
-                    Society Ji was born. Starting with just 10 pilot societies in Bangalore, we've grown to 
-                    serve over 500 societies and 50,000+ residents across India.
+                    Together with a passionate team sharing the same vision of technology-enabled communities, 
+                    Society Ji was born in Jaipur. Starting with just 5 pilot societies, we've grown to 
+                    serve 10+ societies and 1,200+ residents in Jaipur.
                   </p>
                 </div>
               </div>
@@ -145,10 +142,10 @@ const About = () => {
                 <div className="glass-card rounded-3xl p-8">
                   <div className="grid grid-cols-2 gap-6">
                     {[
-                      { value: "500+", label: "Societies" },
-                      { value: "50K+", label: "Residents" },
-                      { value: "20+", label: "Cities" },
-                      { value: "4.9★", label: "App Rating" }
+                      { value: "10+", label: "Societies" },
+                      { value: "1,200+", label: "Residents" },
+                      { value: "Jaipur", label: "City" },
+                      { value: "4.8★", label: "App Rating" }
                     ].map((stat, index) => (
                       <div key={index} className="text-center p-4 rounded-2xl bg-background">
                         <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
