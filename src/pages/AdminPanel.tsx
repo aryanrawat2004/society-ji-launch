@@ -84,7 +84,7 @@ const AdminPanel = () => {
       console.log('Generating credentials with data:', formData);
       console.log('API Base URL:', API_BASE_URL);
       
-      const response = await apiRequest<GeneratedCredentials>("/api/admin/generate-credentials", {
+      const response = await apiRequest<{ data: GeneratedCredentials } | GeneratedCredentials>("/api/admin/generate-credentials", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -93,7 +93,13 @@ const AdminPanel = () => {
         body: JSON.stringify(formData),
       });
 
-      setGeneratedCredentials(response);
+      console.log('API Response:', response);
+      
+      // Extract credentials from response (handle both nested and direct response)
+      const credentials = 'data' in response ? response.data : response;
+      console.log('Extracted credentials:', credentials);
+      
+      setGeneratedCredentials(credentials as GeneratedCredentials);
       toast({
         title: "Success!",
         description: "Admin credentials generated successfully.",
