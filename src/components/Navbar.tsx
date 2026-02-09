@@ -197,30 +197,7 @@ const Navbar = () => {
               );
             }
 
-            return (
-              <>
-                <Button
-                  variant={isScrolled || !isHomePage ? "ghost" : "heroOutline"}
-                  size="sm"
-                  className={`${
-                    isScrolled || !isHomePage
-                      ? "border border-border hover:border-primary/30"
-                      : "border-white/20"
-                  } transition-all duration-300`}
-                  asChild
-                >
-                  <Link to="/signup">Sign Up</Link>
-                </Button>
-                <Button
-                  variant={isScrolled || !isHomePage ? "default" : "hero"}
-                  size="sm"
-                  className="shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
-                  asChild
-                >
-                  <Link to="/login">Login</Link>
-                </Button>
-              </>
-            );
+            return null;
           })()}
         </div>
 
@@ -293,16 +270,7 @@ const Navbar = () => {
                   );
                 }
 
-                return (
-                  <>
-                    <Button variant="outline" size="default" className="w-full justify-center" asChild>
-                      <Link to="/signup">Sign Up</Link>
-                    </Button>
-                    <Button variant="default" size="default" className="w-full justify-center shadow-lg shadow-primary/20" asChild>
-                      <Link to="/login">Login</Link>
-                    </Button>
-                  </>
-                );
+                return null;
               })()}
             </div>
           </div>
