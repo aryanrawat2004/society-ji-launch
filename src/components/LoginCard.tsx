@@ -33,8 +33,8 @@ const LoginCard = ({
       console.log("Redirecting to admin panel...");
       navigate("/admin", { replace: true });
     } else if (loginSuccess === 'user') {
-      console.log("Redirecting to home...");
-      navigate("/", { replace: true });
+      console.log("Redirecting to user dashboard...");
+      navigate("/dashboard", { replace: true });
     }
   }, [loginSuccess, navigate]);
 
@@ -45,35 +45,39 @@ const LoginCard = ({
     setLoginSuccess(null);
 
     try {
-      // Try admin login first
-      let isAdminLogin = false;
+      let loginResult: any = null;
+      let loginType: 'admin' | 'user' | null = null;
+
+      // Try admin login first (for @mabicons.com users and system-generated admins)
       try {
-        const adminResult = await adminLogin(email, password);
-        console.log("Admin login successful:", adminResult);
-        isAdminLogin = true;
-        setLoginSuccess('admin');
-        return;
+        loginResult = await adminLogin(email, password);
+        loginType = 'admin';
+        console.log("Admin login successful:", loginResult);
       } catch (adminErr: any) {
-        // Admin login failed, try user login
-        console.log("Admin login failed:", adminErr);
+        console.log("Admin login failed, trying user login:", adminErr);
         
-        // If it's an explicit authentication error, don't try user login
-        if (adminErr?.status === 401 || adminErr?.status === 403) {
-          const errorMessage = adminErr?.message || "Invalid credentials";
-          throw new Error(errorMessage);
+        // If admin login failed, try user login
+        try {
+          loginResult = await userLogin(email, password);
+          loginType = 'user';
+          console.log("User login successful:", loginResult);
+        } catch (userErr: any) {
+          // Both logins failed
+          const errorMsg = userErr?.message || adminErr?.message || "Invalid credentials";
+          throw new Error(errorMsg);
         }
       }
 
-      // If admin login failed, try user login
-      if (!isAdminLogin) {
-        try {
-          const userResult = await userLogin(email, password);
-          console.log("User login successful:", userResult);
+      // Determine routing based on user role from response
+      if (loginResult) {
+        const userRole = loginResult.role || loginResult.data?.role;
+        
+        // Route to admin panel if user is an admin
+        if (userRole === 'admin' || loginType === 'admin') {
+          setLoginSuccess('admin');
+        } else {
+          // Route to home for regular users
           setLoginSuccess('user');
-        } catch (userErr: any) {
-          // Both logins failed
-          const errorMsg = userErr?.message || "Invalid credentials";
-          throw new Error(errorMsg);
         }
       }
     } catch (err: any) {
@@ -93,6 +97,15 @@ const LoginCard = ({
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Info Banner */}
+          <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 text-sm">
+            <p className="text-blue-800 dark:text-blue-200">
+              <strong>Regular users:</strong> Access your society dashboard
+              <br />
+              <strong>@mabicons.com:</strong> Get admin privileges automatically
+            </p>
+          </div>
+          
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input

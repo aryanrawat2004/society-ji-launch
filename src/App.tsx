@@ -12,6 +12,7 @@ import AdminLogin from "./pages/AdminLogin";
 import Signup from "./pages/Signup";
 import CreateSociety from "./pages/CreateSociety";
 import AdminPanel from "./pages/AdminPanel";
+import UserDashboard from "./pages/UserDashboard";
 import { getAuthProfile, getAuthToken } from "@/lib/auth";
 
 const queryClient = new QueryClient();
@@ -49,6 +50,7 @@ const App = () => (
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin/login" element={<Navigate to="/login" replace />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
           <Route
             path="/admin"
             element={

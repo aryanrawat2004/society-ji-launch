@@ -23,9 +23,15 @@ export const apiRequest = async <T>(
   path: string,
   options: RequestInit = {}
 ): Promise<T> => {
+  // Don't override Content-Type if already set
+  const defaultHeaders: Record<string, string> = {};
+  if (!options.headers || !Object.keys(options.headers).some(k => k.toLowerCase() === 'content-type')) {
+    defaultHeaders["Content-Type"] = "application/json";
+  }
+  
   const response = await fetch(buildApiUrl(path), {
     headers: {
-      "Content-Type": "application/json",
+      ...defaultHeaders,
       ...(options.headers || {}),
     },
     ...options,
