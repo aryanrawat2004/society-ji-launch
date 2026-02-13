@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Copy, CheckCircle, Eye, EyeOff, ChevronLeft, ChevronRight, Plus, RefreshCw } from "lucide-react";
+import { User, Copy, CheckCircle, Eye, EyeOff, ChevronLeft, ChevronRight, Plus, RefreshCw, Mail, Send, Smartphone, Check, Bell } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -45,6 +45,9 @@ const AdminCredentials = () => {
   const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [sendingEmail, setSendingEmail] = useState(false);
+  const [sendingNotification, setSendingNotification] = useState(false);
+  const [sendingBoth, setSendingBoth] = useState(false);
 
   // Credentials history (current + previously generated)
   const [credentialsList, setCredentialsList] = useState<GeneratedCredentials[]>([]);
@@ -129,6 +132,69 @@ const AdminCredentials = () => {
       toast({ title: "Copied!", description: "Credentials copied to clipboard." });
       setTimeout(() => setCopied(false), 2000);
     });
+  };
+
+  const shareCredentials = async (method: 'email' | 'sms' | 'both') => {
+    if (!currentCredential) return;
+
+    const adminId = currentCredential.admin_id || currentCredential.id;
+    if (!adminId) {
+      toast({ 
+        title: "Error", 
+        description: "Invalid credential data", 
+        variant: "destructive" 
+      });
+      return;
+    }
+
+    // Set appropriate loading state
+    if (method === 'email') setSendingEmail(true);
+    else if (method === 'sms') setSendingNotification(true);
+    else setSendingBoth(true);
+
+    try {
+      const response: any = await apiRequest(
+        "/api/admin/share-credentials",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            admin_id: adminId,
+            method: method,
+          }),
+        }
+      );
+
+      // Show success message based on what was sent
+      let successMsg = "";
+      if (method === 'email') {
+        successMsg = `Email sent to ${currentCredential.email}`;
+      } else if (method === 'sms') {
+        successMsg = `Notification sent to ${currentCredential.phone}`;
+      } else {
+        successMsg = `Sent to ${currentCredential.email} and ${currentCredential.phone}`;
+      }
+
+      toast({ 
+        title: "Credentials Shared! ✓", 
+        description: successMsg,
+        duration: 5000,
+      });
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to send credentials";
+      toast({ 
+        title: "Failed to Send", 
+        description: errorMessage, 
+        variant: "destructive" 
+      });
+    } finally {
+      setSendingEmail(false);
+      setSendingNotification(false);
+      setSendingBoth(false);
+    }
   };
 
   const formatDate = (dateStr?: string) => {
@@ -333,9 +399,65 @@ const AdminCredentials = () => {
                     )}
                   </div>
                 </div>
-                <Button onClick={copyCredentials} className="w-full text-sm md:text-base" variant="outline">
-                  <Copy className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1.5 md:mr-2" /> {copied ? "Copied! ✓" : "Copy All Details"}
-                </Button>
+                <div className="space-y-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Button onClick={copyCredentials} className="flex-1 text-sm md:text-base" variant="outline">
+                      <Copy className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1.5 md:mr-2" /> {copied ? "Copied! ✓" : "Copy Details"}
+                    </Button>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <Button 
+                      onClick={() => shareCredentials('email')} 
+                      className="text-xs md:text-sm bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white" 
+                      disabled={sendingEmail || !currentCredential.generated_password}
+                    >
+                      {sendingEmail ? (
+                        <>
+                          <RefreshCw className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5 animate-spin" /> Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Mail className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5" /> Email
+                        </>
+                      )}
+                    </Button>
+                    <Button 
+                      onClick={() => shareCredentials('sms')} 
+                      className="text-xs md:text-sm bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white" 
+                      disabled={sendingNotification || !currentCredential.generated_password}
+                    >
+                      {sendingNotification ? (
+                        <>
+                          <RefreshCw className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5 animate-spin" /> Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Bell className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5" /> App
+                        </>
+                      )}
+                    </Button>
+                    <Button 
+                      onClick={() => shareCredentials('both')} 
+                      className="text-xs md:text-sm bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white" 
+                      disabled={sendingBoth || !currentCredential.generated_password}
+                    >
+                      {sendingBoth ? (
+                        <>
+                          <RefreshCw className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5 animate-spin" /> Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Check className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5" /> Both
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                </div>
+                {!currentCredential.generated_password && (
+                  <div className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 p-2 rounded border border-amber-200 dark:border-amber-800">
+                    ⚠️ Password not available - sharing disabled for older credentials
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-8 md:py-10">
