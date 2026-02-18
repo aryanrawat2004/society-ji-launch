@@ -167,7 +167,7 @@ const PrivacyPolicy = () => {
               </p>
               <ul className="space-y-2 text-muted-foreground">
                 <li><span className="font-medium text-foreground">App Name:</span> SocietyJi</li>
-                <li><span className="font-medium text-foreground">Email:</span> <a href="mailto:support@societyji.com" className="text-primary hover:underline">support@societyji.com</a></li>
+                <li><span className="font-medium text-foreground">Email:</span> <a href="mailto:hello@societyji.com" className="text-primary hover:underline">hello@societyji.com</a></li>
                 <li><span className="font-medium text-foreground">Website:</span> <a href="https://societyji.com" className="text-primary hover:underline">societyji.com</a></li>
               </ul>
             </section>
