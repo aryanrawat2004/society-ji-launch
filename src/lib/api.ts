@@ -1,5 +1,5 @@
 export const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://13.201.60.115:8000";
+  import.meta.env.VITE_API_BASE_URL || "";
 
 export const buildApiUrl = (path: string) => {
   if (path.startsWith("http")) {
