@@ -18,7 +18,7 @@ const Footer = () => {
     ],
     support: [
       { label: "Contact Us", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Privacy Policy", href: "/privacy-policy.html" },
       { label: "Terms of Service", href: "#" },
     ],
   };
@@ -78,6 +78,18 @@ const Footer = () => {
                   </a>
                 </div>
               </div>
+              <a
+                href="https://maps.app.goo.gl/MimXtrmLczLb9bk87"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 hover:text-primary transition-colors"
+              >
+                <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                <span className="text-sm leading-relaxed">
+                  09, opposite Sunny Trade Center, Gangaram Nagar, New Aatish Market, RHB Colony, Mansarovar, Jaipur,
+                  Rajasthan 302020
+                </span>
+              </a>
             </div>
           </div>
 
