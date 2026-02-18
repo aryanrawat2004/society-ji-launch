@@ -14,6 +14,7 @@ import CreateSociety from "./pages/CreateSociety";
 import AdminPanel from "./pages/AdminPanel";
 import UserDashboard from "./pages/UserDashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import DeleteAccount from "./pages/DeleteAccount";
 import { getAuthProfile, getAuthToken } from "@/lib/auth";
 
 const queryClient = new QueryClient();
@@ -77,6 +78,7 @@ const App = () => (
             }
           />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/delete-account" element={<DeleteAccount />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
