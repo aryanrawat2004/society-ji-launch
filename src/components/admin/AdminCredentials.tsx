@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Copy, CheckCircle, Eye, EyeOff, ChevronLeft, ChevronRight, Plus, RefreshCw, Mail, Send, Smartphone, Check, Bell } from "lucide-react";
+import { User, Copy, CheckCircle, Eye, EyeOff, ChevronLeft, ChevronRight, Plus, RefreshCw, Mail, Send, Smartphone, Check, Phone } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -168,14 +168,13 @@ const AdminCredentials = () => {
         }
       );
 
-      // Show success message based on what was sent
       let successMsg = "";
       if (method === 'email') {
         successMsg = `Email sent to ${currentCredential.email}`;
       } else if (method === 'sms') {
-        successMsg = `Notification sent to ${currentCredential.phone}`;
+        successMsg = `SMS sent to ${currentCredential.phone}`;
       } else {
-        successMsg = `Sent to ${currentCredential.email} and ${currentCredential.phone}`;
+        successMsg = `Email & SMS sent to ${currentCredential.email} and ${currentCredential.phone}`;
       }
 
       toast({ 
@@ -432,7 +431,7 @@ const AdminCredentials = () => {
                         </>
                       ) : (
                         <>
-                          <Bell className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5" /> App
+                          <Phone className="h-3 w-3 md:h-3.5 md:w-3.5 mr-1 md:mr-1.5" /> SMS
                         </>
                       )}
                     </Button>
