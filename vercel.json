@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "societyji.com" }
+      ],
+      "destination": "https://www.societyji.com/$1",
+      "permanent": true
+    }
+  ]
+}
