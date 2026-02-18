@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import CreateSociety from "./pages/CreateSociety";
 import AdminPanel from "./pages/AdminPanel";
 import UserDashboard from "./pages/UserDashboard";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { getAuthProfile, getAuthToken } from "@/lib/auth";
 
 const queryClient = new QueryClient();
@@ -75,6 +76,7 @@ const App = () => (
               </RequireAdmin>
             }
           />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

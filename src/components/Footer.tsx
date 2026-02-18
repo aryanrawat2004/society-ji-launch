@@ -18,7 +18,7 @@ const Footer = () => {
     ],
     support: [
       { label: "Contact Us", href: "/contact" },
-      { label: "Privacy Policy", href: "#" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "#" },
     ],
   };
