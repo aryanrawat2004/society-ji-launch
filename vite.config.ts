@@ -13,9 +13,8 @@ export default defineConfig(({ mode }) => ({
     },
     proxy: {
       '/api': {
-        target: 'https://api.societyji.com',
+        target: 'http://13.201.60.115:8000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
         secure: false,
       }
     }
