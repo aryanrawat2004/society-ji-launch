@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/(.*)",
@@ -10,8 +12,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/:path*", "destination": "http://13.201.60.115:8000/api/:path*" },
-    { "source": "/:path*", "destination": "/index.html" }
+    { "source": "/api/:path*", "destination": "http://13.201.60.115:8000/api/:path*" }
   ],
   "headers": [
     {
