@@ -7,8 +7,7 @@
       ],
       "destination": "https://www.societyji.com/$1",
       "permanent": true
-    },
-    { "source": "/privacy-policy.html", "destination": "/privacy-policy", "permanent": true }
+    }
   ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "http://13.201.60.115:8000/api/:path*" },
