@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import AnimatedSection from "./AnimatedSection";
+import { motion } from "framer-motion";
 
 const faqs = [
   {
@@ -43,43 +43,53 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section id="faq" className="py-24 bg-gradient-to-b from-lavender-soft to-white">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-purple-100 text-primary rounded-full text-sm font-medium mb-4">
-              FAQ
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Frequently Asked <span className="text-primary">Questions</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to know about Society<span className="text-primary font-semibold">Ji</span>. Can't find the answer you're looking for? 
-              Reach out to our support team.
-            </p>
-          </div>
-        </AnimatedSection>
+    <section id="faq" className="py-24 md:py-32 relative overflow-hidden bg-[hsl(263,84%,8%)]">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-purple-600/5 rounded-full blur-[200px]" />
 
-        <AnimatedSection delay={0.2}>
-          <div className="glass-card rounded-3xl p-6 md:p-8">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`}
-                  className="border-b border-purple-100 last:border-0"
-                >
-                  <AccordionTrigger className="text-left text-foreground hover:text-primary py-6 text-base md:text-lg font-medium">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </AnimatedSection>
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block px-5 py-2 rounded-full bg-white/5 border border-white/10 text-purple-300 text-sm font-medium mb-5 backdrop-blur-sm">
+            FAQ
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5">
+            Frequently Asked <span className="text-purple-400">Questions</span>
+          </h2>
+          <p className="text-lg text-white/40 max-w-2xl mx-auto">
+            Everything you need to know about Society<span className="text-purple-400 font-semibold">Ji</span>. Can't find the answer? Reach out to our support team.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="rounded-3xl p-6 md:p-8 border border-white/[0.06] bg-white/[0.02] backdrop-blur-md"
+        >
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border-b border-white/[0.06] last:border-0"
+              >
+                <AccordionTrigger className="text-left text-white/80 hover:text-purple-300 py-6 text-base md:text-lg font-medium transition-colors">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-white/40 pb-6 text-base leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
       </div>
     </section>
   );
