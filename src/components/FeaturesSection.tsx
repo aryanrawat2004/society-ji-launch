@@ -63,13 +63,13 @@ const iconAnimation = {
   hover: {
     scale: 1.15,
     rotate: [0, -10, 10, -5, 5, 0],
-    transition: { duration: 0.6, ease: "easeInOut" },
+    transition: { duration: 0.6, ease: "easeInOut" as const },
   },
 };
 
 const cardAnimation = {
   rest: { y: 0 },
-  hover: { y: -8, transition: { duration: 0.3, ease: "easeOut" } },
+  hover: { y: -8, transition: { duration: 0.3, ease: "easeOut" as const } },
 };
 
 const glowAnimation = {
